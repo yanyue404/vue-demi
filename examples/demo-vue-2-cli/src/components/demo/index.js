@@ -47,13 +47,22 @@ function h(type, options, children) {
 export default defineComponent({
   name: "Test",
   emits: ["load"],
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
-    return {
-      show: true,
-    };
+    return {};
+  },
+  computed: {
+    display() {
+      return this.show;
+    },
   },
   watch: {},
-  emits: ["load", "confirm", "cancel"],
+  emits: ["load", "confirm", "cancel", "close"],
   mounted() {
     this.$emit("load", "mounted");
   },
@@ -70,11 +79,11 @@ export default defineComponent({
     const cancelHandler = {
       click: () => {
         this.handler("cancel");
-        this.show = false;
+        this.handler("close");
       },
     };
-    let show = this.show;
-    if (show) {
+    let display = this.show;
+    if (display) {
       return h("div", { class: "dialog-wrap" }, [
         h("p", {}, "代码是写给人看的，附带放在机器上可以运行！"),
         h("div", { class: "dialog-btns" }, [
