@@ -1,0 +1,50 @@
+.dialog-wrap {
+  width: 500px;
+  height: 200px;
+  border-radius: 10px; /* 圆角边框 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white; /* 文字颜色 */
+  font-family: Arial, sans-serif; /* 字体样式 */
+  position: relative; /* 定位 */
+  padding: 20px; /* 内边距 */
+}
+
+p {
+  color: #666;
+}
+
+.dialog-button-confirm {
+  background-color: #28a745; /* 确认按钮背景色 */
+  color: white;
+  border: none;
+  border-radius: 5px; /* 圆角边框 */
+  padding: 10px 20px; /* 内边距 */
+  cursor: pointer; /* 鼠标指针效果 */
+  transition: background-color 0.3s, transform 0.2s; /* 过渡效果 */
+  margin: 10px; /* 按钮之间的间距 */
+}
+
+.dialog-button-confirm:hover {
+  background-color: #218838; /* 悬停时变色 */
+  transform: scale(1.05); /* 鼠标悬停时放大 */
+}
+
+.dialog-button-cancel {
+  background-color: #dc3545; /* 取消按钮背景色 */
+  color: white;
+  border: none;
+  border-radius: 5px; /* 圆角边框 */
+  padding: 10px 20px; /* 内边距 */
+  cursor: pointer; /* 鼠标指针效果 */
+  transition: background-color 0.3s, transform 0.2s; /* 过渡效果 */
+  margin: 10px; /* 按钮之间的间距 */
+}
+
+.dialog-button-cancel:hover {
+  background-color: #c82333; /* 悬停时变色 */
+  transform: scale(1.05); /* 鼠标悬停时放大 */
+}
