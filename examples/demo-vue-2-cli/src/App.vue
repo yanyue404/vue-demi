@@ -14,13 +14,14 @@
 
 <script>
 import { useMouse } from "@vue-demi/use-mouse";
-import Vue from "vue";
 import { ref } from "vue-demi";
 import { Button, Notify } from "vant";
-import "vant/lib/button/style";
-import "vant/lib/notify/style";
+import "vant/lib/index.css";
+// import "vant/lib/button/style";
+// import "vant/lib/notify/style";
 import Demo from "./components/demo/index";
 import Dialog from "./components/dialog";
+import { mount } from "./utils";
 
 export default {
   name: "App",
@@ -53,13 +54,8 @@ export default {
         document.body.appendChild(el);
         let selectDialog = () => {
           return new Promise((resolve, reject) => {
-            new Vue({
-              el,
-              render(h) {
-                return h(Dialog, {
-                  on: { confirm: () => resolve("confirm"), cancel: () => resolve("cancel") },
-                });
-              },
+            mount(Dialog, {
+              on: { confirm: () => resolve("confirm"), cancel: () => resolve("cancel") },
             });
           });
         };

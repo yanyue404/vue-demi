@@ -1,17 +1,5 @@
-import {
-  computed,
-  defineComponent,
-  getCurrentInstance,
-  h as hDemi,
-  isVue2,
-  isVue3,
-  onMounted,
-  onUnmounted,
-  ref,
-  unref,
-  watch,
-  watchEffect,
-} from "vue-demi";
+import { defineComponent, isVue2, ref } from "vue-demi";
+import { h } from "../../utils";
 import "./style.css";
 if (isVue2) {
   // Vue 2 only
@@ -25,35 +13,25 @@ if (isVue2) {
   console.log("now is vue3");
 }
 
-function adaptOnsV3(ons) {
-  if (!ons) return null;
-  return Object.entries(ons).reduce((ret, [key, handler]) => {
-    key = key.charAt(0).toUpperCase() + key.slice(1);
-    key = `on${key}`;
-    return { ...ret, [key]: handler };
-  }, {});
-}
-
-function h(type, options, children) {
-  if (isVue2) return hDemi(type, options, children);
-
-  const { props, domProps, on, ...extraOptions } = options;
-
-  const ons = adaptOnsV3(on);
-  const params = { ...extraOptions, ...props, ...domProps, ...ons };
-  return hDemi(type, params, children);
-}
-
 export default defineComponent({
   name: "Test",
   emits: ["load"],
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
-    return {
-      show: true,
-    };
+    return {};
+  },
+  computed: {
+    display() {
+      return this.show;
+    },
   },
   watch: {},
-  emits: ["load", "confirm", "cancel"],
+  emits: ["load", "confirm", "cancel", "close"],
   mounted() {
     this.$emit("load", "mounted");
   },
@@ -70,11 +48,11 @@ export default defineComponent({
     const cancelHandler = {
       click: () => {
         this.handler("cancel");
-        this.show = false;
+        this.handler("close");
       },
     };
-    let show = this.show;
-    if (show) {
+    let display = this.show;
+    if (display) {
       return h("div", { class: "dialog-wrap" }, [
         h("p", {}, "代码是写给人看的，附带放在机器上可以运行！"),
         h("div", { class: "dialog-btns" }, [

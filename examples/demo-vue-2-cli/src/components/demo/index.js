@@ -1,17 +1,5 @@
-import {
-  computed,
-  defineComponent,
-  getCurrentInstance,
-  h as hDemi,
-  isVue2,
-  isVue3,
-  onMounted,
-  onUnmounted,
-  ref,
-  unref,
-  watch,
-  watchEffect,
-} from "vue-demi";
+import { defineComponent, isVue2, ref } from "vue-demi";
+import { h } from "../../utils";
 import "./style.css";
 if (isVue2) {
   // Vue 2 only
@@ -23,25 +11,6 @@ if (isVue2) {
 } else {
   // Vue 3 only
   console.log("now is vue3");
-}
-
-function adaptOnsV3(ons) {
-  if (!ons) return null;
-  return Object.entries(ons).reduce((ret, [key, handler]) => {
-    key = key.charAt(0).toUpperCase() + key.slice(1);
-    key = `on${key}`;
-    return { ...ret, [key]: handler };
-  }, {});
-}
-
-function h(type, options, children) {
-  if (isVue2) return hDemi(type, options, children);
-
-  const { props, domProps, on, ...extraOptions } = options;
-
-  const ons = adaptOnsV3(on);
-  const params = { ...extraOptions, ...props, ...domProps, ...ons };
-  return hDemi(type, params, children);
 }
 
 export default defineComponent({

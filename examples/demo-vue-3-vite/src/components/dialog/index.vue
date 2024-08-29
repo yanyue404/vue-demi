@@ -2,7 +2,6 @@
   <div>
     <van-dialog
       v-model:show="show"
-      v-model="show"
       title="标题"
       @confirm="$emit('confirm')"
       @cancel="$emit('cancel')"
