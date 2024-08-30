@@ -207,6 +207,7 @@ See [examples](./examples).
 - [vue-insta-stories](https://github.com/UnevenSoftware/vue-insta-stories) - Instagram stories in your vue projects.
 - [vue-tiny-validate](https://github.com/FrontLabsOfficial/vue-tiny-validate) - Tiny Vue Validate Composition
 - [v-perfect-signature](https://github.com/wobsoriano/v-perfect-signature) - Pressure-sensitive signature drawing for Vue 2 and 3
+- [vue-draggable-plus](https://github.com/Alfred-Skyblue/vue-draggable-plus) - Vue2 & Vue3 的拖拽组件
 - [vue-winbox](https://github.com/wobsoriano/vue-winbox) - A wrapper component for WinBox.js that adds the ability to mount Vue components.
 - [vue-word-highlighter](https://github.com/kawamataryo/vue-word-highlighter) - The word highlighter library for Vue 2 and Vue 3
 - [vue-chart-3](https://github.com/victorgarciaesgi/vue-chart-3) - Vue.js component for Chart.js
